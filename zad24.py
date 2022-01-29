@@ -1,0 +1,11 @@
+a = [5, 10, 15, 20, 25, 30]
+a.append(35)
+print(len(a))
+print(a[1:4])
+print(a[0:-1])
+a.reverse()
+print(a)
+a.pop(int(len(a)/2))
+print(a)
+print(sum(a))
+print(sum(a)/len(a))
