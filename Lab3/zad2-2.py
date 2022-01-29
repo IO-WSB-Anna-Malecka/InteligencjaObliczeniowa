@@ -2,8 +2,6 @@ import pygad
 import numpy
 import time
 
-#[0. 1. 1. 1. 1. 0. 0. 0. 0. 1. 0.] = 7+6+2+5+3 = 23 kg
-#300+200+40+500+280
 przedmioty = ["zegar", "obraz-pejzaż", "obraz-portret", "radio", "laptop", "lampka nocna", "srebrne sztućce", "porcelana", "figura z brązu", "skórzana torebka", "odkurzacz"]
 S = [100, 300, 200, 40, 500, 70, 100, 250, 300, 280, 300]
 wagi = [7, 7, 6, 2, 5, 6, 1, 3, 10, 3, 15]
