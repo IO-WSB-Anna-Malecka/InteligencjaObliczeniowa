@@ -4,11 +4,8 @@ import time
 
 S = [1, 2, 3, 6, 10, 17, 25, 29, 30, 41, 51, 60, 70, 79, 80]
 
-#definiujemy parametry chromosomu
-#geny to liczby: 0 lub 1
 gene_space = [0, 1]
 
-#definiujemy funkcję fitness
 def fitness_func(solution, solution_idx):
     sum1 = numpy.sum(solution * S)
     solution_invert = 1 - solution
@@ -19,31 +16,20 @@ def fitness_func(solution, solution_idx):
 
 fitness_function = fitness_func
 
-#ile chromsomów w populacji
-#ile genow ma chromosom
 sol_per_pop = 10
 num_genes = len(S)
 
-#ile wylaniamy rodzicow do "rozmanazania" (okolo 50% populacji)
-#ile pokolen
-#ilu rodzicow zachowac (kilka procent)
 num_parents_mating = 5
 num_generations = 30
 keep_parents = 2
 
-#jaki typ selekcji rodzicow?
-#sss = steady, rws=roulette, rank = rankingowa, tournament = turniejowa
 parent_selection_type = "sss"
 
-#w il =u punktach robic krzyzowanie?
 crossover_type = "single_point"
 
-#mutacja ma dzialac na ilu procent genow?
-#trzeba pamietac ile genow ma chromosom
 mutation_type = "random"
 mutation_percent_genes = 8
 
-#inicjacja algorytmu z powyzszymi parametrami wpisanymi w atrybuty
 ga_instance = pygad.GA(gene_space=gene_space,
                        num_generations=num_generations,
                        num_parents_mating=num_parents_mating,
@@ -57,8 +43,6 @@ ga_instance = pygad.GA(gene_space=gene_space,
                        mutation_percent_genes=mutation_percent_genes,
                        stop_criteria=["reach_0"]) #podpunkt A
 
-#uruchomienie algorytmu
-
 czas = []
 for index in range(10):
     start = time.time()
@@ -71,7 +55,7 @@ print("Średni czas to", sum(czas) / len(czas))
 
 
 print("Number of generations passed is {generations_completed}".format(generations_completed=ga_instance.generations_completed)) #podpunkt B
-#podsumowanie: najlepsze znalezione rozwiazanie (chromosom+ocena)
+
 solution, solution_fitness, solution_idx = ga_instance.best_solution()
 print("Parameters of the best solution : {solution}".format(solution=solution))
 print("Fitness value of the best solution = {solution_fitness}".format(solution_fitness=solution_fitness))
@@ -80,5 +64,4 @@ print("Fitness value of the best solution = {solution_fitness}".format(solution_
 prediction = numpy.sum(S*solution)
 print("Predicted output based on the best solution : {prediction}".format(prediction=prediction))
 
-#wyswietlenie wykresu: jak zmieniala sie ocena na przestrzeni pokolen
 ga_instance.plot_fitness()
